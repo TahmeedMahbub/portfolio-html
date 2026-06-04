@@ -309,6 +309,16 @@ section{padding:5rem 0}
 .cl-arrow{color:var(--text-tertiary);font-size:23px;margin-top:4px;transition:color 0.15s}
 .contact-note{font-family:var(--font-mono);font-size:14px;color:var(--text-tertiary);border-top:1px solid var(--border);padding-top:1.5rem}
 
+/* NOW */
+#now{perspective:1500px;perspective-origin:50% 30%}
+.now-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;perspective:1500px;perspective-origin:50% 30%}
+.now-card-label{font-family:var(--font-mono);font-size:13px;color:rgba(145,169,247,0.7);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.9rem;display:block}
+
+/* WHAT I CAN HELP WITH */
+.help-block{margin-bottom:1.75rem}
+.help-q{font-size:18px;font-weight:500;color:var(--text-primary);margin-bottom:0.85rem}
+.help-chips{display:flex;flex-wrap:wrap;gap:8px}
+
 /* MOBILE */
 #mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(10,10,11,0.96);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:6px 0 8px}
 .mobile-nav-inner{display:flex;justify-content:space-around}
@@ -330,12 +340,14 @@ section{padding:5rem 0}
   #mobile-nav{display:block}
   .overview-grid{grid-template-columns:1fr}
   .domains-grid{grid-template-columns:repeat(2,1fr)}
+  .now-grid{grid-template-columns:repeat(2,1fr)}
   .roadmap-grid{grid-template-columns:1fr}
   .impact-metrics{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:640px){
   html{font-size:16px}
   .domains-grid{grid-template-columns:1fr}
+  .now-grid{grid-template-columns:1fr}
   .project-cols{grid-template-columns:1fr}
   .project-body{padding:1.25rem}
   .impact-metrics{grid-template-columns:1fr 1fr}

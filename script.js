@@ -6,7 +6,7 @@ function updateTime(){
 updateTime();
 setInterval(updateTime,1000);
 
-const sectionIds=['overview','domains','projects','building','impact','toolkit','contact'];
+const sectionIds=['overview','domains','principles','projects','building','now','impact','toolkit','contact'];
 const navLinks=document.querySelectorAll('[data-section]');
 const mobileBtns=document.querySelectorAll('.mobile-nav-btn');
 
