@@ -9,11 +9,36 @@ setInterval(updateTime,1000);
 const sectionIds=['overview','domains','principles','projects','building','now','impact','toolkit','contact'];
 const navLinks=document.querySelectorAll('[data-section]');
 const mobileBtns=document.querySelectorAll('.mobile-nav-btn');
+const navGlass=document.querySelector('.nav-glass');
+const navGlassReflection=document.querySelector('.nav-glass-reflection');
+let lastGlassTop=null;
+
+function moveGlass(link){
+  if(!navGlass||!link)return;
+  const top=link.offsetTop;
+  navGlass.style.height=link.offsetHeight+'px';
+  navGlass.style.transform='translateY('+top+'px)';
+  navGlass.style.opacity='1';
+  if(navGlassReflection){
+    const delta=lastGlassTop===null?0:top-lastGlassTop;
+    navGlassReflection.style.transition='none';
+    navGlassReflection.style.transform='translateY('+(-delta*0.35)+'px) rotate(8deg)';
+    requestAnimationFrame(()=>{
+      navGlassReflection.style.transition='';
+      navGlassReflection.style.transform='translateY(0) rotate(8deg)';
+    });
+  }
+  lastGlassTop=top;
+}
 
 function setActive(id){
+  let activeLink=null;
   navLinks.forEach(a=>{
-    a.classList.toggle('active',a.dataset.section===id);
+    const on=a.dataset.section===id;
+    a.classList.toggle('active',on);
+    if(on)activeLink=a;
   });
+  moveGlass(activeLink);
   mobileBtns.forEach(b=>{
     const matches=b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'");
     b.classList.toggle('active',matches);
@@ -44,6 +69,20 @@ navLinks.forEach(a=>{
 function scrollToSection(id){
   document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});
 }
+
+function positionActiveGlass(){
+  const active=document.querySelector('[data-section].active');
+  if(active&&navGlass){
+    const prev=navGlass.style.transition;
+    navGlass.style.transition='none';
+    lastGlassTop=null;
+    moveGlass(active);
+    requestAnimationFrame(()=>{navGlass.style.transition=prev||'';});
+  }
+}
+window.addEventListener('load',positionActiveGlass);
+window.addEventListener('resize',positionActiveGlass);
+positionActiveGlass();
 
 const fadeEls=document.querySelectorAll('.fade-up');
 const fadeObs=new IntersectionObserver(entries=>{

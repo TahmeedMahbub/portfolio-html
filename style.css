@@ -23,9 +23,36 @@
   --radius-xl:16px;
   /* ---- Liquid Glass tokens (shared by all cards) ---- */
   --glass-spring:cubic-bezier(0.16,1,0.3,1);
-  --glass-bg:linear-gradient(135deg,rgba(255,255,255,0.07) 0%,rgba(255,255,255,0.03) 38%,rgba(255,255,255,0.015) 62%,rgba(255,255,255,0.05) 100%);
-  --glass-shadow:inset 0 1.4px 1px rgba(190,225,255,0.45),inset 1.4px 0 1px rgba(170,210,255,0.30),inset 0 -1.4px 1px rgba(255,206,170,0.28),inset -1.4px 0 1px rgba(255,196,150,0.18),inset 0 0 0 0.7px rgba(255,255,255,0.10),inset 0 14px 34px -14px rgba(0,0,0,0.45),0 18px 34px -16px rgba(0,0,0,0.55),0 4px 10px -6px rgba(0,0,0,0.4);
-  --glass-shadow-hover:inset 0 1.6px 1.4px rgba(205,235,255,0.55),inset 1.6px 0 1.4px rgba(180,218,255,0.38),inset 0 -1.6px 1.4px rgba(255,210,175,0.34),inset -1.6px 0 1.4px rgba(255,200,155,0.22),inset 0 0 0 0.7px rgba(255,255,255,0.14),inset 0 16px 40px -16px rgba(0,0,0,0.5),0 40px 64px -24px rgba(0,0,0,0.62),0 10px 22px -10px rgba(0,0,0,0.45);
+  /* clean, near-clear inner pane — most of the realism lives on the edges */
+  --glass-bg:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.018) 44%,rgba(255,255,255,0.01) 60%,rgba(255,255,255,0.042) 100%);
+  /* REST: polished optical edge of a ~5mm slab.
+     low-opacity rim + thin crisp bevel-light on each face (cool top/left, warm
+     bottom/right = chromatic dispersion) + a ~7px refractive thickness band
+     ghosted in from top & bottom edges, then inner volume shading + ground shadow.
+     Center stays clear; the perimeter does the work. */
+  --glass-shadow:
+    inset 0 0 0 0.6px rgba(255,255,255,0.06),
+    inset 0 1.5px 0.5px rgba(214,236,255,0.58),
+    inset 1.5px 0 0.5px rgba(188,220,255,0.32),
+    inset 0 -1.5px 0.5px rgba(255,212,182,0.46),
+    inset -1.5px 0 0.5px rgba(255,202,166,0.26),
+    inset 0 8px 12px -7px rgba(150,198,255,0.34),
+    inset 0 -8px 12px -7px rgba(255,188,150,0.26),
+    inset 0 18px 40px -18px rgba(0,0,0,0.4),
+    0 24px 44px -20px rgba(0,0,0,0.55),
+    0 6px 14px -8px rgba(0,0,0,0.4);
+  /* HOVER: slab tilts, edges thicken, refractive bands brighten & widen */
+  --glass-shadow-hover:
+    inset 0 0 0 0.6px rgba(255,255,255,0.1),
+    inset 0 2px 0.5px rgba(224,242,255,0.7),
+    inset 2px 0 0.5px rgba(198,228,255,0.42),
+    inset 0 -2px 0.5px rgba(255,218,188,0.54),
+    inset -2px 0 0.5px rgba(255,208,172,0.32),
+    inset 0 11px 16px -8px rgba(150,198,255,0.44),
+    inset 0 -11px 16px -8px rgba(255,188,150,0.34),
+    inset 0 20px 46px -18px rgba(0,0,0,0.46),
+    0 46px 70px -26px rgba(0,0,0,0.62),
+    0 12px 24px -10px rgba(0,0,0,0.45);
 }
 html{scroll-behavior:smooth;font-size:21px;-webkit-font-smoothing:antialiased}
 body{background:var(--bg-base);background-image:radial-gradient(ellipse at 20% 0%,rgba(91,127,241,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(62,207,142,0.06) 0%,transparent 50%);color:var(--text-primary);font-family:var(--font-sans);line-height:1.6;overflow-x:hidden}
@@ -61,21 +88,53 @@ button{cursor:pointer;font-family:var(--font-sans);border:none;background:none;c
   padding:2rem 1rem;display:flex;flex-direction:column;justify-content:space-between;
 }
 .nav-label{font-family:var(--font-mono);font-size:13px;color:var(--text-tertiary);letter-spacing:0.14em;text-transform:uppercase;padding:0 0.75rem;margin-bottom:1rem}
-.nav-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.nav-wrap{position:relative}
+.nav-list{list-style:none;display:flex;flex-direction:column;gap:2px;position:relative;z-index:1}
+
+/* Floating liquid-glass selector */
+.nav-glass{
+  position:absolute;left:0;top:0;width:100%;height:0;
+  border-radius:18px;opacity:0;pointer-events:none;z-index:0;overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,0.13),rgba(255,255,255,0.035));
+  backdrop-filter:blur(14px) saturate(1.6);
+  -webkit-backdrop-filter:blur(14px) saturate(1.6);
+  border:1px solid rgba(255,255,255,0.16);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.38),
+    0 2px 6px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    inset 0 -1px 1px rgba(0,0,0,0.18);
+  transform:translateY(0);
+  will-change:transform,height;
+  transition:
+    transform 0.62s cubic-bezier(0.34,1.42,0.5,1),
+    height 0.5s cubic-bezier(0.34,1.3,0.5,1),
+    opacity 0.35s ease;
+}
+.nav-glass-reflection{
+  position:absolute;top:-60%;left:-25%;width:65%;height:220%;
+  background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,0.22) 42%,rgba(255,255,255,0.06) 58%,transparent 78%);
+  transform:translateY(0) rotate(8deg);
+  transition:transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  pointer-events:none;
+}
 .nav-item a{
   display:flex;align-items:center;gap:10px;padding:8px 12px;
   border-radius:var(--radius-md);font-size:17px;color:var(--text-tertiary);
-  transition:color 0.15s,background 0.15s;position:relative;
-  border-left:2px solid transparent;
+  transition:color 0.3s ease;position:relative;z-index:1;
 }
-.nav-item a:hover{color:var(--text-secondary);background:var(--bg-surface)}
-.nav-item a.active{color:var(--text-primary);background:var(--bg-elevated);border-left-color:var(--accent)}
+.nav-item a:hover{color:var(--text-secondary)}
+.nav-item a.active{color:var(--text-primary)}
 .sidebar-cta{
-  display:block;text-align:center;padding:10px;border-radius:var(--radius-lg);
-  border:1px solid var(--border);font-size:17px;color:var(--text-secondary);
-  transition:all 0.15s;margin:0 0.25rem;
+  display:block;text-align:center;padding:11px;border-radius:16px;
+  font-size:17px;color:var(--text-secondary);margin:0 0.25rem;border:none;
+  background:var(--glass-bg);
+  backdrop-filter:blur(6px) saturate(1.4);-webkit-backdrop-filter:blur(6px) saturate(1.4);
+  box-shadow:var(--glass-shadow);
+  transition:transform 0.5s var(--glass-spring),box-shadow 0.5s var(--glass-spring),color 0.3s ease;
+  will-change:transform;
 }
-.sidebar-cta:hover{border-color:var(--border-hover);color:var(--text-primary)}
+.sidebar-cta:hover{color:var(--text-primary);box-shadow:var(--glass-shadow-hover);transform:translateY(-2px)}
 
 /* MAIN LAYOUT */
 #main{padding-top:44px;margin-left:250px;min-height:100vh}
@@ -88,7 +147,7 @@ section{padding:5rem 0}
 .section-desc{font-size:18px;color:var(--text-secondary);max-width:620px;line-height:1.7;margin-bottom:2.5rem}
 
 /* CARD */
-.card{position:relative;border-radius:18px;padding:1.5rem;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
+.card{position:relative;border-radius:26px;padding:1.5rem;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
 .card:hover{box-shadow:var(--glass-shadow-hover);transform:rotate3d(1,1,0,13deg) translateZ(8px)}
 
 /* BADGE */
@@ -114,13 +173,13 @@ section{padding:5rem 0}
 .hero-philosophy{font-size:18px;color:var(--text-secondary);line-height:1.75;max-width:540px;border-left:2px solid rgba(91,127,241,0.4);padding-left:1rem;margin-bottom:2rem}
 .quick-stats{display:flex;flex-wrap:wrap;gap:0.75rem}
 .quick-stats{display:flex;flex-wrap:wrap;gap:0.85rem;perspective:1300px;perspective-origin:50% 30%}
-.stat-chip{position:relative;padding:0.85rem 1.1rem;border-radius:16px;display:flex;flex-direction:column;gap:3px;transform-style:preserve-3d;transform:rotate3d(1,1,0,1.2deg);background:var(--glass-bg);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:var(--glass-shadow);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
+.stat-chip{position:relative;padding:0.85rem 1.1rem;border-radius:20px;display:flex;flex-direction:column;gap:3px;transform-style:preserve-3d;transform:rotate3d(1,1,0,1.2deg);background:var(--glass-bg);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:var(--glass-shadow);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
 .stat-chip:hover{transform:rotate3d(1,1,0,13deg) translateZ(8px);box-shadow:var(--glass-shadow-hover)}
 .stat-value{font-size:1.8rem;font-weight:600;color:var(--text-primary);line-height:1;text-shadow:0 1px 3px rgba(0,0,0,0.4)}
 .stat-label{font-family:var(--font-mono);font-size:13px;color:var(--text-tertiary);letter-spacing:0.1em;text-transform:uppercase;text-shadow:0 1px 2px rgba(0,0,0,0.35)}
-.config-card{position:relative;border-radius:18px;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
-.config-card:hover{box-shadow:var(--glass-shadow-hover);transform:rotate3d(1,1,0,13deg) translateZ(8px)}
-.config-header{display:flex;align-items:center;gap:8px;padding:12px 16px;border-radius:18px 18px 0 0;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.08)}
+.config-card{position:relative;border-radius:26px;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:perspective(1300px) rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
+.config-card:hover{box-shadow:var(--glass-shadow-hover);transform:perspective(1300px) rotate3d(1,1,0,13deg) translateZ(8px)}
+.config-header{display:flex;align-items:center;gap:8px;padding:12px 16px;border-radius:26px 26px 0 0;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.08)}
 .config-dot{width:8px;height:8px;border-radius:50%;background:var(--bg-overlay)}
 .config-filename{font-family:var(--font-mono);font-size:14px;color:var(--text-tertiary);margin-left:6px}
 .config-body{padding:1rem}
@@ -133,7 +192,7 @@ section{padding:5rem 0}
 
 /* DOMAINS */
 .domains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;perspective:1500px;perspective-origin:50% 30%}
-.domain-card{position:relative;padding:1.6rem;border-radius:20px;transform-style:preserve-3d;transform:rotate3d(1,1,0,1.2deg);background:var(--glass-bg);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:var(--glass-shadow);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
+.domain-card{position:relative;padding:1.6rem;border-radius:26px;transform-style:preserve-3d;transform:rotate3d(1,1,0,1.2deg);background:var(--glass-bg);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:var(--glass-shadow);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
 .domain-card:hover,.domain-card.fade-up.visible:hover{transform:rotate3d(1,1,0,9.5deg) translateZ(8px);box-shadow:var(--glass-shadow-hover)}
 .domain-card:hover .domain-corner{opacity:1}
 .domain-corner{position:absolute;bottom:0;right:0;width:60px;height:60px;opacity:0;transition:opacity 0.4s;background:radial-gradient(circle at bottom right,rgba(91,127,241,0.1) 0%,transparent 70%);pointer-events:none}
@@ -144,9 +203,9 @@ section{padding:5rem 0}
 
 /* PROJECTS */
 #projects{perspective:1600px;perspective-origin:50% 30%}
-.project-card{position:relative;border-radius:18px;margin-bottom:1.25rem;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
+.project-card{position:relative;border-radius:26px;overflow:hidden;margin-bottom:1.25rem;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
 .project-card:hover{box-shadow:var(--glass-shadow-hover);transform:rotate3d(1,1,0,9deg) translateZ(8px)}
-.project-bar{height:2px;width:100%;border-radius:18px 18px 0 0}
+.project-bar{height:2px;width:100%}
 .project-bar.shipped{background:var(--success)}
 .project-bar.in-progress{background:var(--warning)}
 .project-body{padding:1.75rem 2rem}
@@ -177,7 +236,7 @@ section{padding:5rem 0}
 .roadmap-card{
   position:relative;
   padding:1.4rem 1.6rem;
-  border-radius:20px;
+  border-radius:26px;
   transform-style:preserve-3d;
   transform:rotate3d(1,1,0,1.2deg);
   background:var(--glass-bg);
@@ -206,7 +265,7 @@ section{padding:5rem 0}
 .metric-card{
   position:relative;
   padding:1.4rem 1.6rem;
-  border-radius:20px;
+  border-radius:26px;
   transform-style:preserve-3d;
   /* gentle resting dimensionality + the physical twist axis (TL↔BR diagonal) */
   transform:rotate3d(1,1,0,1.2deg);
@@ -230,15 +289,16 @@ section{padding:5rem 0}
    element's own rounded box, so the highlight never spills past the corners. */
 .metric-card::before,.domain-card::before,.stat-chip::before,.roadmap-card::before,.config-card::before,.project-card::before,.philosophy-card::before,.card::before{
   content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  transform:translateZ(13px); /* front face of the ~5mm slab */
-  /* polished corner refraction + faint glazing across the pane */
+  transform:translateZ(15px); /* front face of the ~5mm slab */
+  /* light catches the polished curved CORNERS the most; the center stays clear,
+     and a faint reflection streak travels across the curved edge on hover */
   background:
-    radial-gradient(120% 90% at 18% 12%,rgba(255,255,255,0.16) 0%,rgba(255,255,255,0.04) 18%,transparent 42%),
-    radial-gradient(120% 90% at 86% 92%,rgba(255,255,255,0.05) 0%,transparent 40%),
-    linear-gradient(125deg,transparent 38%,rgba(255,255,255,0.10) 46%,rgba(255,255,255,0.30) 50%,rgba(255,255,255,0.55) 50%,rgba(255,255,255,0.30) 50%,rgba(255,255,255,0.10) 54%,transparent 62%);
+    radial-gradient(72% 58% at 13% 9%,rgba(255,255,255,0.24) 0%,rgba(255,255,255,0.05) 24%,transparent 48%),
+    radial-gradient(68% 58% at 88% 91%,rgba(255,255,255,0.07) 0%,transparent 44%),
+    linear-gradient(125deg,transparent 43%,rgba(255,255,255,0.05) 47%,rgba(255,255,255,0.17) 50%,rgba(255,255,255,0.05) 53%,transparent 57%);
   background-repeat:no-repeat,no-repeat,no-repeat;
   background-size:100% 100%,100% 100%,300% 300%;
-  background-position:0 0,0 0,170% 170%; /* specular fully off the bottom-right at rest */
+  background-position:0 0,0 0,170% 170%; /* reflection parked off the bottom-right at rest */
   opacity:0.9;
   transition:background-position 0.9s cubic-bezier(0.16,1,0.3,1),opacity 0.9s ease;
 }
@@ -249,12 +309,13 @@ section{padding:5rem 0}
    Slightly darker with a chromatic edge ring read through the glass. */
 .metric-card::after,.domain-card::after,.stat-chip::after,.roadmap-card::after,.config-card::after,.project-card::after,.philosophy-card::after,.card::after{
   content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  transform:translateZ(-13px); /* back face of the ~5mm slab */
-  background:linear-gradient(135deg,rgba(10,12,20,0.32) 0%,rgba(8,10,16,0.16) 50%,rgba(10,12,20,0.30) 100%);
+  transform:translateZ(-15px); /* back face of the ~5mm slab */
+  background:linear-gradient(135deg,rgba(8,11,20,0.34) 0%,rgba(6,9,15,0.14) 50%,rgba(8,11,20,0.32) 100%);
+  /* chromatic edge ring read THROUGH the glass thickness from behind */
   box-shadow:
-    inset 0 0 0 1px rgba(120,180,255,0.12),
-    inset 0 0 0 2px rgba(255,160,120,0.06),
-    inset 0 0 26px rgba(0,0,0,0.55);
+    inset 0 0 0 1px rgba(120,185,255,0.16),
+    inset 0 0 0 2.5px rgba(255,165,120,0.08),
+    inset 0 0 30px rgba(0,0,0,0.55);
   opacity:0.85;
   transition:opacity 0.9s ease;
 }
@@ -278,7 +339,7 @@ section{padding:5rem 0}
   .metric-card:hover,.domain-card:hover,.stat-chip:hover,.roadmap-card:hover{transform:rotate3d(1,1,0,1.2deg)}
   .config-card:hover,.project-card:hover,.philosophy-card:hover,.card:hover{transform:rotate3d(1,1,0,1.2deg)}
 }
-.philosophy-card{position:relative;border-radius:20px;padding:2.5rem 3rem;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
+.philosophy-card{position:relative;border-radius:28px;padding:2.5rem 3rem;transform-style:preserve-3d;background:var(--glass-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:var(--glass-shadow);transform:rotate3d(1,1,0,1.2deg);transition:transform 0.9s var(--glass-spring),box-shadow 0.9s var(--glass-spring);will-change:transform}
 .philosophy-card:hover{box-shadow:var(--glass-shadow-hover);transform:rotate3d(1,1,0,7deg) translateZ(8px)}
 .quote-mark{position:absolute;top:1rem;left:1.5rem;font-size:5rem;color:rgba(91,127,241,0.08);line-height:1;font-family:Georgia,serif;pointer-events:none;user-select:none}
 .philosophy-text{font-size:1.4rem;color:var(--text-secondary);font-weight:300;line-height:1.7;max-width:700px;position:relative}
