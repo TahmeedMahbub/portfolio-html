@@ -1,0 +1,5 @@
+# robots.txt — https://tahmeed-three.vercel.app/
+User-agent: *
+Allow: /
+
+Sitemap: https://tahmeed-three.vercel.app/sitemap.xml
