@@ -94,29 +94,44 @@ button{cursor:pointer;font-family:var(--font-sans);border:none;background:none;c
 /* Floating liquid-glass selector */
 .nav-glass{
   position:absolute;left:0;top:0;width:100%;height:0;
-  border-radius:18px;opacity:0;pointer-events:none;z-index:0;overflow:hidden;
-  background:linear-gradient(135deg,rgba(255,255,255,0.13),rgba(255,255,255,0.035));
-  backdrop-filter:blur(14px) saturate(1.6);
-  -webkit-backdrop-filter:blur(14px) saturate(1.6);
-  border:1px solid rgba(255,255,255,0.16);
+  border-radius:16px;opacity:0;pointer-events:none;z-index:0;overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 15% 0%,rgba(255,255,255,0.14) 0%,transparent 55%),
+    linear-gradient(135deg,rgba(255,255,255,0.11) 0%,rgba(255,255,255,0.03) 45%,rgba(255,255,255,0.055) 100%);
+  backdrop-filter:blur(16px) saturate(1.7);
+  -webkit-backdrop-filter:blur(16px) saturate(1.7);
+  /* polished optical edge: low-opacity rim + chromatic dispersion
+     (cool top/left, warm bottom/right) + refractive thickness band + depth */
   box-shadow:
-    0 10px 28px rgba(0,0,0,0.38),
-    0 2px 6px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.28),
-    inset 0 -1px 1px rgba(0,0,0,0.18);
+    inset 0 0 0 0.6px rgba(255,255,255,0.08),
+    inset 0 1.5px 0.5px rgba(214,236,255,0.6),
+    inset 1.5px 0 0.5px rgba(188,220,255,0.32),
+    inset 0 -1.5px 0.5px rgba(255,212,182,0.46),
+    inset -1.5px 0 0.5px rgba(255,202,166,0.26),
+    inset 0 7px 11px -7px rgba(150,198,255,0.32),
+    inset 0 -7px 11px -7px rgba(255,188,150,0.24),
+    0 12px 30px -10px rgba(0,0,0,0.45),
+    0 3px 8px -4px rgba(0,0,0,0.35);
   transform:translateY(0);
   will-change:transform,height;
   transition:
-    transform 0.62s cubic-bezier(0.34,1.42,0.5,1),
-    height 0.5s cubic-bezier(0.34,1.3,0.5,1),
-    opacity 0.35s ease;
+    transform 0.66s cubic-bezier(0.34,1.46,0.46,1),
+    height 0.52s cubic-bezier(0.34,1.3,0.5,1),
+    opacity 0.4s ease;
+}
+/* inner top sheen — a thin curved highlight catching the polished top edge */
+.nav-glass::after{
+  content:'';position:absolute;left:8%;right:8%;top:1px;height:42%;
+  border-radius:inherit;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,0.16) 0%,rgba(255,255,255,0.04) 40%,transparent 100%);
+  opacity:0.8;
 }
 .nav-glass-reflection{
-  position:absolute;top:-60%;left:-25%;width:65%;height:220%;
-  background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,0.22) 42%,rgba(255,255,255,0.06) 58%,transparent 78%);
+  position:absolute;top:-60%;left:-30%;width:55%;height:220%;
+  background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,0.12) 38%,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0.12) 62%,transparent 80%);
   transform:translateY(0) rotate(8deg);
-  transition:transform 0.8s cubic-bezier(0.22,1,0.36,1);
-  pointer-events:none;
+  transition:transform 0.85s cubic-bezier(0.22,1,0.36,1);
+  pointer-events:none;mix-blend-mode:screen;
 }
 .nav-item a{
   display:flex;align-items:center;gap:10px;padding:8px 12px;
