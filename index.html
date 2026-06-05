@@ -16,370 +16,61 @@
 </head>
 <body>
 
-<!-- STATUS BAR -->
-<div id="status-bar" role="banner">
-  <div class="sb-inner">
-    <span class="sb-name">Tahmeed Mahbub</span>
-    <span class="sb-time" id="dhaka-time" aria-label="Current time in Dhaka"></span>
-    <div class="status-dot-wrap" role="status" aria-label="Available for projects">
-      <div class="dot-pulse"></div>
-      <span class="status-label">Available</span>
-    </div>
-  </div>
-</div>
+<!--
+  This document contains ONLY structural containers.
+  All content is rendered by /js/app.js from the /data/*.js files.
+  To change content, edit the data files — not this HTML.
+-->
 
-<!-- SIDEBAR -->
-<nav id="sidebar" aria-label="Portfolio navigation">
-  <div>
-    <p class="nav-label">Navigation</p>
-    <div class="nav-wrap">
-      <span class="nav-glass" aria-hidden="true"><span class="nav-glass-reflection"></span></span>
-      <ul class="nav-list">
-        <li class="nav-item"><a href="#overview" class="active" data-section="overview">Overview</a></li>
-        <li class="nav-item"><a href="#domains" data-section="domains">What I Build</a></li>
-        <li class="nav-item"><a href="#principles" data-section="principles">Principles</a></li>
-        <li class="nav-item"><a href="#projects" data-section="projects">Projects</a></li>
-        <li class="nav-item"><a href="#building" data-section="building">Building</a></li>
-        <li class="nav-item"><a href="#now" data-section="now">Now</a></li>
-        <li class="nav-item"><a href="#impact" data-section="impact">Impact</a></li>
-        <li class="nav-item"><a href="#toolkit" data-section="toolkit">Toolkit</a></li>
-        <li class="nav-item"><a href="#contact" data-section="contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  <a href="mailto:hello@tahmeed.dev" class="sidebar-cta">Get in touch</a>
-</nav>
+<!-- STATUS BAR (rendered) -->
+<div id="status-bar" role="banner"></div>
+
+<!-- SIDEBAR (rendered) -->
+<nav id="sidebar" aria-label="Portfolio navigation"></nav>
 
 <!-- MAIN -->
 <main id="main" tabindex="-1">
-  <a href="#overview" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;focus:position:static;width:auto;height:auto">Skip to content</a>
+  <a href="#overview" class="skip-link">Skip to content</a>
   <div class="content">
-
-    <!-- OVERVIEW -->
-    <section id="overview" class="grid-bg" aria-label="Overview">
-      <div class="overview-grid">
-        <!-- Left -->
-        <div>
-          <div class="overview-tag-row fade-up">
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-tertiary);letter-spacing:0.14em;text-transform:uppercase">Portfolio.v4</span>
-            <div class="overview-divider"></div>
-            <div class="status-dot-wrap" role="status" aria-label="Available">
-              <div class="dot-pulse"></div>
-              <span class="status-label">Available</span>
-            </div>
-          </div>
-
-          <h1 class="hero-name fade-up">Tahmeed Mahbub</h1>
-          <p class="hero-role fade-up">Software Engineer &amp; Systems Builder</p>
-          <p class="hero-philosophy fade-up">
-            I build software that solves real business problems — automation systems, internal tools, and products that take friction out of how a business runs day to day.
-          </p>
-
-          <div class="quick-stats fade-up">
-            <div class="stat-chip">
-              <span class="stat-value">4+</span>
-              <span class="stat-label">Years building</span>
-            </div>
-            <div class="stat-chip">
-              <span class="stat-value">12+</span>
-              <span class="stat-label">Projects shipped</span>
-            </div>
-            <div class="stat-chip">
-              <span class="stat-value">5+</span>
-              <span class="stat-label">Live systems</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Config card -->
-        <div class="config-card fade-up">
-          <div class="config-header">
-            <div class="config-dot"></div>
-            <div class="config-dot"></div>
-            <div class="config-dot"></div>
-            <span class="config-filename">tahmeed.config</span>
-          </div>
-          <div class="config-body">
-            <div class="config-line"><span class="config-key">role</span><span class="config-arrow">→</span><span class="config-val">Software Engineer</span></div>
-            <div class="config-line"><span class="config-key">exp</span><span class="config-arrow">→</span><span class="config-val">4+ years</span></div>
-            <div class="config-line"><span class="config-key">focus</span><span class="config-arrow">→</span><span class="config-val">Automation · SaaS · AI</span></div>
-            <div class="config-line"><span class="config-key">location</span><span class="config-arrow">→</span><span class="config-val">Dhaka, Bangladesh</span></div>
-            <div class="config-line"><span class="config-key">status</span><span class="config-arrow">→</span><span class="config-val">Building · Available</span></div>
-          </div>
-          <div class="config-footer">
-            <span class="badge badge-default">Builder</span>
-            <span class="badge badge-default">Product-minded</span>
-            <span class="badge badge-default">Systems thinker</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY I BUILD -->
-    <section id="why" aria-labelledby="why-h">
-      <p class="section-label fade-up">Why I Build</p>
-      <h2 class="section-title fade-up" id="why-h">The reason behind the systems</h2>
-      <blockquote class="philosophy-card fade-up" aria-label="Why I build">
-        <span class="quote-mark" aria-hidden="true">“</span>
-        <p class="philosophy-text">Most businesses don't lose time to big problems — they lose it to <em>small, repeated friction</em> nobody stops to fix. I like finding that friction and replacing it with systems that quietly handle it in the background. There's a specific satisfaction in watching a process that used to eat someone's afternoon run on its own in seconds.</p>
-        <cite class="philosophy-cite">— What keeps me building</cite>
-      </blockquote>
-    </section>
-
-    <!-- DOMAINS -->
-    <section id="domains" aria-labelledby="domains-h">
-      <p class="section-label fade-up">What I Build</p>
-      <h2 class="section-title fade-up" id="domains-h">Problem domains I specialize in</h2>
-      <p class="section-desc fade-up">I don't specialize in technologies — I specialize in problems. The stack follows the problem, not the other way around.</p>
-      <div class="domains-grid">
-        <div class="domain-card fade-up"><span class="domain-num">01</span><h3 class="domain-title">Business Automation</h3><p class="domain-desc">Eliminating manual, repetitive operations. If a human is doing it on a schedule, software should do it better.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">02</span><h3 class="domain-title">Internal Tools</h3><p class="domain-desc">Software built for the team using it, not for show. Functional, fast, and tailored to real workflows.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">03</span><h3 class="domain-title">Order &amp; Inventory Systems</h3><p class="domain-desc">Full-cycle commerce operations — from intake to fulfillment, tracked and automated end-to-end.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">04</span><h3 class="domain-title">Workflow Optimization</h3><p class="domain-desc">Reducing friction in how teams collaborate and operate. Systems that get out of the way.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">05</span><h3 class="domain-title">AI-Assisted Development</h3><p class="domain-desc">Using language models as leverage to ship faster, document better, and solve harder problems.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">06</span><h3 class="domain-title">SaaS Product Development</h3><p class="domain-desc">Building standalone, sellable systems from scratch — product thinking baked in from day one.</p><div class="domain-corner"></div></div>
-      </div>
-    </section>
-
-    <!-- PRINCIPLES -->
-    <section id="principles" aria-labelledby="principles-h">
-      <p class="section-label fade-up">Principles</p>
-      <h2 class="section-title fade-up" id="principles-h">How I think about building</h2>
-      <p class="section-desc fade-up">A few rules I keep coming back to. They shape every system I ship.</p>
-      <div class="domains-grid">
-        <div class="domain-card fade-up"><span class="domain-num">01</span><h3 class="domain-title">Build for the people using it</h3><p class="domain-desc">Software should fit the workflow that already exists, not force a new one onto the team.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">02</span><h3 class="domain-title">Prefer simple over clever</h3><p class="domain-desc">Clever breaks at 2am. Simple systems are the ones still running a year later.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">03</span><h3 class="domain-title">Automate the repeatable</h3><p class="domain-desc">If a task happens on a schedule, it shouldn't depend on someone remembering to do it.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">04</span><h3 class="domain-title">Measure what actually changes</h3><p class="domain-desc">Success is hours saved and errors removed — not lines of code or tech choices.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="domain-num">05</span><h3 class="domain-title">Ship, then sharpen</h3><p class="domain-desc">A working system in production teaches more than a perfect one stuck in planning.</p><div class="domain-corner"></div></div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" aria-labelledby="projects-h">
-      <p class="section-label fade-up">Featured Projects</p>
-      <h2 class="section-title fade-up" id="projects-h">What I've built that matters</h2>
-      <p class="section-desc fade-up">Not portfolios of pretty UIs. Systems that changed how businesses operate.</p>
-
-      <article class="project-card fade-up" aria-label="Project: Order Management System">
-        <div class="project-bar shipped"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <h3 class="project-title">Order Management System</h3>
-            <span class="badge badge-success">Shipped</span>
-          </div>
-          <div class="project-cols">
-            <div><p class="project-field-label">Problem</p><p class="project-field-text">A business tracked 200+ daily orders across WhatsApp, spreadsheets, and sticky notes — causing missed orders and frustrated customers.</p></div>
-            <div><p class="project-field-label">Solution</p><p class="project-field-text">Built a Laravel-based internal tool with role-based access, real-time order status tracking, automated customer notifications, and a reporting dashboard.</p></div>
-          </div>
-          <div class="project-divider"></div>
-          <div class="project-bottom">
-            <div class="project-bottom-left">
-              <div class="stack-chips"><span class="stack-chip">PHP</span><span class="stack-chip">Laravel</span><span class="stack-chip">MySQL</span><span class="stack-chip">Filament</span><span class="stack-chip">Livewire</span></div>
-              <div class="project-actions">
-                <a href="#" class="project-btn project-btn-primary" aria-label="Live demo of Order Management System">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  Live Demo
-                </a>
-                <a href="#" class="project-btn" aria-label="Download Order Management System case study">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Download
-                </a>
-              </div>
-            </div>
-            <div class="outcome-block"><p class="outcome-label">Outcome</p><p class="outcome-text">Cut order processing time by ~60%. No missed orders reported in the first 6 months.</p></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card fade-up" aria-label="Project: Business Automation Suite">
-        <div class="project-bar shipped"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <h3 class="project-title">Business Automation Suite</h3>
-            <span class="badge badge-success">Shipped</span>
-          </div>
-          <div class="project-cols">
-            <div><p class="project-field-label">Problem</p><p class="project-field-text">A growing SME was spending 15+ hours weekly on data entry, invoice generation, and inter-department reporting.</p></div>
-            <div><p class="project-field-label">Solution</p><p class="project-field-text">Designed and built a modular automation system integrating with existing tools — triggering workflows, generating documents, and syncing records automatically.</p></div>
-          </div>
-          <div class="project-divider"></div>
-          <div class="project-bottom">
-            <div class="project-bottom-left">
-              <div class="stack-chips"><span class="stack-chip">PHP</span><span class="stack-chip">Laravel</span><span class="stack-chip">MySQL</span><span class="stack-chip">REST APIs</span><span class="stack-chip">Webhooks</span></div>
-              <div class="project-actions">
-                <a href="#" class="project-btn project-btn-primary" aria-label="Live demo of Business Automation Suite">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  Live Demo
-                </a>
-                <a href="#" class="project-btn" aria-label="Download Business Automation Suite case study">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Download
-                </a>
-              </div>
-            </div>
-            <div class="outcome-block"><p class="outcome-label">Outcome</p><p class="outcome-text">Recovered 12+ hours per week. Reporting that took a day now runs in minutes.</p></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card fade-up" aria-label="Project: Inventory & Supply Chain Tool">
-        <div class="project-bar shipped"></div>
-        <div class="project-body">
-          <div class="project-header">
-            <h3 class="project-title">Inventory &amp; Supply Chain Tool</h3>
-            <span class="badge badge-success">Shipped</span>
-          </div>
-          <div class="project-cols">
-            <div><p class="project-field-label">Problem</p><p class="project-field-text">Manual stock tracking led to over-ordering, stockouts, and no visibility into supplier performance.</p></div>
-            <div><p class="project-field-label">Solution</p><p class="project-field-text">Built a centralized inventory system with low-stock alerts, supplier tracking, purchase order generation, and trend analytics.</p></div>
-          </div>
-          <div class="project-divider"></div>
-          <div class="project-bottom">
-            <div class="project-bottom-left">
-              <div class="stack-chips"><span class="stack-chip">PHP</span><span class="stack-chip">Laravel</span><span class="stack-chip">MySQL</span><span class="stack-chip">Alpine.js</span><span class="stack-chip">Tailwind CSS</span></div>
-              <div class="project-actions">
-                <a href="#" class="project-btn project-btn-primary" aria-label="Live demo of Inventory and Supply Chain Tool">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  Live Demo
-                </a>
-                <a href="#" class="project-btn" aria-label="Download Inventory and Supply Chain Tool case study">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Download
-                </a>
-              </div>
-            </div>
-            <div class="outcome-block"><p class="outcome-label">Outcome</p><p class="outcome-text">Reduced overstock by 35%. Procurement decisions now backed by data, not guesswork.</p></div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- BUILDING -->
-    <section id="building" aria-labelledby="building-h">
-      <p class="section-label fade-up">Currently Building</p>
-      <h2 class="section-title fade-up" id="building-h">Public roadmap</h2>
-      <p class="section-desc fade-up">What I'm working on when I'm not working for clients. Always building something.</p>
-      <div class="roadmap-grid">
-        <div>
-          <div class="roadmap-col-header fade-up"><div class="col-dot inprogress"></div><span class="col-title">In Progress</span><span class="col-count">1</span></div>
-          <div class="roadmap-card fade-up">
-            <div><span class="badge badge-warning">Product</span></div>
-            <h3 class="roadmap-card-title">LifeBook</h3>
-            <p class="roadmap-card-desc">A personal operating system for goals, habits, and work — built for builders.</p>
-          </div>
-        </div>
-        <div>
-          <div class="roadmap-col-header fade-up"><div class="col-dot next"></div><span class="col-title">Next Up</span><span class="col-count">1</span></div>
-          <div class="roadmap-card fade-up">
-            <div><span class="badge badge-default">Open Source</span></div>
-            <h3 class="roadmap-card-title">Automation Toolkit</h3>
-            <p class="roadmap-card-desc">Reusable workflow components and integrations for Laravel-based internal tools.</p>
-          </div>
-        </div>
-        <div>
-          <div class="roadmap-col-header fade-up"><div class="col-dot idea"></div><span class="col-title">Idea Queue</span><span class="col-count">1</span></div>
-          <div class="roadmap-card fade-up">
-            <div><span class="badge badge-accent">AI</span></div>
-            <h3 class="roadmap-card-title">AI Assistant for SMEs</h3>
-            <p class="roadmap-card-desc">Natural language interface for small business operations — query your data, trigger workflows.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NOW -->
-    <section id="now" aria-labelledby="now-h">
-      <p class="section-label fade-up">Now</p>
-      <h2 class="section-title fade-up" id="now-h">What I'm focused on right now</h2>
-      <p class="section-desc fade-up">A snapshot of where my attention is this season — updated as things change.</p>
-      <div class="now-grid">
-        <div class="domain-card fade-up"><span class="now-card-label">Building</span><h3 class="domain-title">LifeBook</h3><p class="domain-desc">A personal operating system for goals, habits, and work.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="now-card-label">Learning</span><h3 class="domain-title">Next.js &amp; TypeScript</h3><p class="domain-desc">Extending past Laravel into full-stack JavaScript products.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="now-card-label">Exploring</span><h3 class="domain-title">AI-Assisted Development</h3><p class="domain-desc">Using language models as real leverage in day-to-day shipping.</p><div class="domain-corner"></div></div>
-        <div class="domain-card fade-up"><span class="now-card-label">Thinking About</span><h3 class="domain-title">Automation for SMEs</h3><p class="domain-desc">How small businesses can automate operations without a tech team.</p><div class="domain-corner"></div></div>
-      </div>
-    </section>
-
-    <!-- IMPACT -->
-    <section id="impact" aria-labelledby="impact-h">
-      <p class="section-label fade-up">Impact</p>
-      <h2 class="section-title fade-up" id="impact-h">Outcomes over outputs</h2>
-      <p class="section-desc fade-up">I measure success by what changes after the software ships. Not lines of code. Not technology choices.</p>
-      <div class="impact-metrics">
-        <div class="metric-card fade-up"><p class="metric-value" aria-label="about 60 percent">~60%</p><p class="metric-label">Faster Operations</p><p class="metric-desc">Less time spent processing each order after deployment</p></div>
-        <div class="metric-card fade-up"><p class="metric-value" aria-label="12 plus hours">12h+</p><p class="metric-label">Weekly Time Saved</p><p class="metric-desc">Manual hours recovered per week through automation</p></div>
-        <div class="metric-card fade-up"><p class="metric-value" aria-label="5 plus">5+</p><p class="metric-label">Workflows Automated</p><p class="metric-desc">Business processes now running without manual steps</p></div>
-        <div class="metric-card fade-up"><p class="metric-value" aria-label="still in use">100%</p><p class="metric-label">Still in Use</p><p class="metric-desc">Every system I've shipped is still running in production</p></div>
-      </div>
-      <blockquote class="philosophy-card fade-up" aria-label="Design philosophy">
-        <span class="quote-mark" aria-hidden="true">"</span>
-        <p class="philosophy-text">I measure success by what changes <em>after the software is shipped</em>. Not lines of code. Not technology choices. Business outcomes.</p>
-        <cite class="philosophy-cite">— Tahmeed Mahbub, Software Engineer</cite>
-      </blockquote>
-    </section>
-
-    <!-- TOOLKIT -->
-    <section id="toolkit" aria-labelledby="toolkit-h">
-      <p class="section-label fade-up">Toolkit</p>
-      <h2 class="section-title fade-up" id="toolkit-h">Tools &amp; technologies</h2>
-      <p class="section-desc fade-up">Organized by purpose, not by hype. I reach for what solves the problem well.</p>
-      <div class="toolkit-table fade-up" role="list" aria-label="Technology toolkit">
-        <div class="toolkit-row" role="listitem"><span class="toolkit-cat">Backend</span><div class="toolkit-tools"><span class="tool-chip">PHP</span><span class="tool-chip">Laravel</span><span class="tool-chip">MySQL</span><span class="tool-chip">PostgreSQL</span><span class="tool-chip">REST APIs</span></div></div>
-        <div class="toolkit-row" role="listitem"><span class="toolkit-cat">Frontend</span><div class="toolkit-tools"><span class="tool-chip">Livewire</span><span class="tool-chip">Alpine.js</span><span class="tool-chip">Tailwind CSS</span><span class="tool-chip">Filament</span></div></div>
-        <div class="toolkit-row" role="listitem"><span class="toolkit-cat">Workflow</span><div class="toolkit-tools"><span class="tool-chip">Laravel Queues</span><span class="tool-chip">Webhooks</span><span class="tool-chip">Cron Jobs</span><span class="tool-chip">Event Broadcasting</span></div></div>
-        <div class="toolkit-row" role="listitem"><span class="toolkit-cat">AI &amp; Tooling</span><div class="toolkit-tools"><span class="tool-chip">OpenAI API</span><span class="tool-chip">Prompt Engineering</span><span class="tool-chip">Git</span><span class="tool-chip">Linux</span><span class="tool-chip">Docker</span></div></div>
-        <div class="toolkit-row" role="listitem"><span class="toolkit-cat">Exploring</span><div class="toolkit-tools"><span class="tool-chip">Next.js</span><span class="tool-chip">TypeScript</span><span class="tool-chip">Python</span><span class="tool-chip">LangChain</span><span class="tool-chip">Supabase</span></div></div>
-      </div>
-      <p class="toolkit-note fade-up">* "Exploring" marks technologies I'm actively learning.</p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-h" style="padding-bottom:6rem">
-      <p class="section-label fade-up">Contact</p>
-      <h2 class="section-title fade-up" id="contact-h">Let's build something useful</h2>
-      <p class="section-desc fade-up">If you have a business problem that needs a technical solution — automation, internal tools, or a product you want to ship — I'd like to hear about it.</p>
-      <div class="help-block fade-up">
-        <p class="help-q">What can I help with?</p>
-        <div class="help-chips">
-          <span class="tool-chip">Business Automation</span>
-          <span class="tool-chip">Internal Tools</span>
-          <span class="tool-chip">Laravel Systems</span>
-          <span class="tool-chip">MVP Development</span>
-          <span class="tool-chip">Workflow Optimization</span>
-        </div>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:hello@tahmeed.dev" class="contact-link fade-up">
-          <div><p class="cl-label">Email</p><p class="cl-value">hello@tahmeed.dev</p></div>
-          <div class="cl-meta"><p class="cl-desc">Best for project inquiries</p><p class="cl-arrow">→</p></div>
-        </a>
-        <a href="https://github.com/tahmeed" target="_blank" rel="noopener noreferrer" class="contact-link fade-up">
-          <div><p class="cl-label">GitHub</p><p class="cl-value">github.com/tahmeed</p></div>
-          <div class="cl-meta"><p class="cl-desc">See what I'm building</p><p class="cl-arrow">→</p></div>
-        </a>
-        <a href="https://linkedin.com/in/tahmeed" target="_blank" rel="noopener noreferrer" class="contact-link fade-up">
-          <div><p class="cl-label">LinkedIn</p><p class="cl-value">linkedin.com/in/tahmeed</p></div>
-          <div class="cl-meta"><p class="cl-desc">Professional background</p><p class="cl-arrow">→</p></div>
-        </a>
-      </div>
-      <p class="contact-note fade-up">Currently open to freelance projects and full-time roles. Response time: usually within 24 hours.</p>
-    </section>
-
+    <section id="overview" class="grid-bg" aria-label="Overview"></section>
+    <section id="why" aria-labelledby="why-h"></section>
+    <section id="domains" aria-labelledby="domains-h"></section>
+    <section id="principles" aria-labelledby="principles-h"></section>
+    <section id="projects" aria-labelledby="projects-h"></section>
+    <section id="building" aria-labelledby="building-h"></section>
+    <section id="now" aria-labelledby="now-h"></section>
+    <section id="impact" aria-labelledby="impact-h"></section>
+    <section id="toolkit" aria-labelledby="toolkit-h"></section>
+    <section id="contact" aria-labelledby="contact-h" style="padding-bottom:6rem"></section>
   </div>
 </main>
 
-<!-- MOBILE NAV -->
-<nav id="mobile-nav" aria-label="Mobile navigation">
-  <div class="mobile-nav-inner">
-    <button class="mobile-nav-btn active" onclick="scrollToSection('overview')" aria-current="page" aria-label="Overview">Overview<div class="mobile-nav-indicator"></div></button>
-    <button class="mobile-nav-btn" onclick="scrollToSection('projects')" aria-label="Projects">Projects<div class="mobile-nav-indicator"></div></button>
-    <button class="mobile-nav-btn" onclick="scrollToSection('building')" aria-label="Building">Building<div class="mobile-nav-indicator"></div></button>
-    <button class="mobile-nav-btn" onclick="scrollToSection('impact')" aria-label="Impact">Impact<div class="mobile-nav-indicator"></div></button>
-    <button class="mobile-nav-btn" onclick="scrollToSection('contact')" aria-label="Contact">Contact<div class="mobile-nav-indicator"></div></button>
-  </div>
-</nav>
+<!-- MOBILE NAV (rendered) -->
+<nav id="mobile-nav" aria-label="Mobile navigation"></nav>
 
-<script src="script.js"></script>
+<!--
+  Loaded as classic scripts (no bundler/server required) so the site
+  works when opened directly as a file. Order matters:
+  data first, then helper modules, then app.js last.
+-->
+<!-- Data -->
+<script src="data/site.js"></script>
+<script src="data/overview.js"></script>
+<script src="data/why-build.js"></script>
+<script src="data/what-i-build.js"></script>
+<script src="data/principles.js"></script>
+<script src="data/projects.js"></script>
+<script src="data/building.js"></script>
+<script src="data/now.js"></script>
+<script src="data/impact.js"></script>
+<script src="data/toolkit.js"></script>
+<script src="data/contact.js"></script>
+<!-- Behavior + renderer -->
+<script src="js/renderer.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/scrollspy.js"></script>
+<!-- Entry point (must be last) -->
+<script src="js/app.js"></script>
 </body>
 </html>
