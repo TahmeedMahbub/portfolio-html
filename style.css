@@ -127,7 +127,7 @@ button{cursor:pointer;font-family:var(--font-sans);border:none;background:none;c
   opacity:0.8;
 }
 .nav-glass-reflection{
-  position:absolute;top:-60%;left:-30%;width:55%;height:220%;
+  position:absolute;bottom:-60%;right:-30%;width:55%;height:220%;
   background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,0.12) 38%,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0.12) 62%,transparent 80%);
   transform:translateY(0) rotate(8deg);
   transition:transform 0.85s cubic-bezier(0.22,1,0.36,1);
@@ -230,13 +230,30 @@ section{padding:5rem 0}
 .project-field-label{font-family:var(--font-mono);font-size:13px;color:var(--text-tertiary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px}
 .project-field-text{font-size:17px;color:var(--text-secondary);line-height:1.65}
 .project-divider{height:1px;background:var(--border);margin-bottom:1.5rem}
-.project-bottom{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1rem}
+.project-bottom{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1.5rem}
+.project-bottom-left{display:flex;flex-direction:column;gap:1.25rem;flex:1 1 auto;min-width:0}
 .stack-chips{display:flex;flex-wrap:wrap;gap:6px}
 .stack-chip{font-family:var(--font-mono);font-size:13px;color:var(--text-tertiary);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:3px 8px;border-radius:var(--radius-sm);transition:all 0.2s}
 .stack-chip:hover{border-color:rgba(255,255,255,0.15);color:var(--text-secondary)}
 .outcome-block{max-width:320px}
 .outcome-label{font-family:var(--font-mono);font-size:13px;color:rgba(62,207,142,0.8);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
 .outcome-text{font-size:17px;color:var(--text-secondary);font-weight:500;line-height:1.5}
+.project-actions{display:flex;flex-wrap:wrap;gap:10px}
+.project-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border-radius:14px;font-size:15px;font-weight:500;
+  color:var(--text-secondary);border:none;
+  background:var(--glass-bg);
+  backdrop-filter:blur(6px) saturate(1.4);-webkit-backdrop-filter:blur(6px) saturate(1.4);
+  box-shadow:var(--glass-shadow);
+  transition:transform 0.5s var(--glass-spring),box-shadow 0.5s var(--glass-spring),color 0.3s ease;
+  will-change:transform;
+}
+.project-btn svg{flex-shrink:0;opacity:0.85;transition:transform 0.3s var(--glass-spring)}
+.project-btn:hover{color:var(--text-primary);box-shadow:var(--glass-shadow-hover);transform:translateY(-2px)}
+.project-btn-primary{color:var(--text-primary)}
+.project-btn-primary:hover svg{transform:translate(2px,-2px)}
+.project-btn:not(.project-btn-primary):hover svg{transform:translateY(2px)}
 
 /* BUILDING */
 .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -426,6 +443,11 @@ section{padding:5rem 0}
   .now-grid{grid-template-columns:1fr}
   .project-cols{grid-template-columns:1fr}
   .project-body{padding:1.25rem}
+  .project-bottom{flex-direction:column}
+  .project-bottom-left{display:contents}
+  .stack-chips{order:1}
+  .outcome-block{order:2;max-width:none}
+  .project-actions{order:3}
   .impact-metrics{grid-template-columns:1fr 1fr}
   .philosophy-card{padding:1.5rem}
   .metric-value{font-size:2.3rem}
