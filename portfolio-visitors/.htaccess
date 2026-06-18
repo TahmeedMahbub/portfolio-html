@@ -1,0 +1,20 @@
+# -----------------------------------------------------------------------------
+# Protect sensitive PHP includes from being requested directly over HTTP.
+# Only track.php should be publicly reachable.
+# -----------------------------------------------------------------------------
+
+# Block direct access to config + helper files.
+<FilesMatch "^(config|functions)\.php$">
+    # Apache 2.4+
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    # Apache 2.2 fallback
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Prevent directory listing.
+Options -Indexes

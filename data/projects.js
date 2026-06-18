@@ -18,47 +18,44 @@ const projects = {
 
   items: [
     {
-      title: 'Order Management System',
+      title: 'Hishaber Khata',
       status: 'shipped',
       problem:
-        'A business tracked 200+ daily orders across WhatsApp, spreadsheets, and sticky notes — causing missed orders and frustrated customers.',
-      solution:
-        'Built a Laravel-based internal tool with role-based access, real-time order status tracking, automated customer notifications, and a reporting dashboard.',
-      outcome:
-        'Cut order processing time by ~60%. No missed orders reported in the first 6 months.',
-      technologies: ['PHP', 'Laravel', 'MySQL', 'Filament', 'Livewire'],
+        'Small businesses tracked sales, purchases, stock, and due payments using notebooks and spreadsheets — leading to inaccurate records and poor business visibility.',
+        solution:
+        'Built a multi-tenant SaaS platform with sales, purchases, inventory tracking, due management, cashbook, reporting, and bilingual support for SME owners.',
+        outcome:
+        'Centralized daily operations, reduced manual bookkeeping, improved stock accuracy, and provided real-time business insights from any device.',
+        technologies: ['PHP', 'Laravel', 'MySQL', 'Materialize CSS', 'JavaScript', 'Email'],
       demoUrl: '#',
-      downloadUrl: '#',
+    },
+    {
+      title: 'LifeBook',
+        status: 'shipped',
+      problem:
+        'Many people start self-improvement journeys with motivation but fail to maintain momentum due to lack of structure, accountability, and feedback.',
+        solution:
+        'Built a full-featured personal growth platform featuring AI-powered mentors, gamified challenges, XP systems, achievements, notifications, and analytics.',
+        outcome:
+        'Transformed personal development into an engaging experience that rewards consistency and promotes long-term habit formation.',
+        technologies: ['PHP', 'Laravel', 'MySQL', 'jQuery', 'OneSignal'],
+      downloadUrl: './files/LifeBook.apk',
       downloadButtonName: 'Download APK',
     },
-    {
-      title: 'Business Automation Suite',
-      status: 'shipped',
-      problem:
-        'A growing SME was spending 15+ hours weekly on data entry, invoice generation, and inter-department reporting.',
-      solution:
-        'Designed and built a modular automation system integrating with existing tools — triggering workflows, generating documents, and syncing records automatically.',
-      outcome:
-        'Recovered 12+ hours per week. Reporting that took a day now runs in minutes.',
-      technologies: ['PHP', 'Laravel', 'MySQL', 'REST APIs', 'Webhooks'],
-      demoUrl: '#',
-      downloadUrl: '#',
-      downloadButtonName: 'Download',
-    },
-    {
-      title: 'Inventory & Supply Chain Tool',
-      status: 'shipped',
-      problem:
-        'Manual stock tracking led to over-ordering, stockouts, and no visibility into supplier performance.',
-      solution:
-        'Built a centralized inventory system with low-stock alerts, supplier tracking, purchase order generation, and trend analytics.',
-      outcome:
-        'Reduced overstock by 35%. Procurement decisions now backed by data, not guesswork.',
-      technologies: ['PHP', 'Laravel', 'MySQL', 'Alpine.js', 'Tailwind CSS'],
-      demoUrl: '#',
-      downloadUrl: '#',
-      downloadButtonName: 'Download',
-    },
+    // {
+    //   title: 'Inventory & Supply Chain Tool',
+    //   status: 'shipped',
+    //   problem:
+    //     'Manual stock tracking led to over-ordering, stockouts, and no visibility into supplier performance.',
+    //   solution:
+    //     'Built a centralized inventory system with low-stock alerts, supplier tracking, purchase order generation, and trend analytics.',
+    //   outcome:
+    //     'Reduced overstock by 35%. Procurement decisions now backed by data, not guesswork.',
+    //   technologies: ['PHP', 'Laravel', 'MySQL', 'Alpine.js', 'Tailwind CSS'],
+    //   demoUrl: '#',
+    //   downloadUrl: '#',
+    //   downloadButtonName: 'Download Tool',
+    // },
   ],
 };
 

@@ -14,7 +14,7 @@ const site = {
   // Sidebar "Get in touch" button.
   cta: {
     label: 'Get in touch',
-    href: 'mailto:hello@tahmeed.dev',
+    href: 'mailto:tahmeedmahbub@gmail.com',
   },
 };
 
@@ -23,10 +23,10 @@ const site = {
 const navItems = [
   { id: 'overview', label: 'Overview' },
   { id: 'domains', label: 'What I Build' },
-  { id: 'principles', label: 'Principles' },
   { id: 'projects', label: 'Projects' },
-  { id: 'building', label: 'Building' },
-  { id: 'now', label: 'Now' },
+  { id: 'principles', label: 'Principles' },
+//   { id: 'building', label: 'Building' },
+  { id: 'now', label: 'Present Focus' },
   { id: 'impact', label: 'Impact' },
   { id: 'toolkit', label: 'Toolkit' },
   { id: 'contact', label: 'Contact' },

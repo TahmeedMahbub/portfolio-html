@@ -24,22 +24,22 @@ const contact = {
   channels: {
     email: {
       label: 'Email',
-      value: 'hello@tahmeed.dev',
-      href: 'mailto:hello@tahmeed.dev',
+      value: 'tahmeedmahbub@gmail.com',
+      href: 'mailto:tahmeedmahbub@gmail.com',
       desc: 'Best for project inquiries',
       external: false,
     },
     github: {
       label: 'GitHub',
-      value: 'github.com/tahmeed',
-      href: 'https://github.com/tahmeed',
+      value: 'github.com/TahmeedMahbub',
+      href: 'https://github.com/TahmeedMahbub',
       desc: "See what I'm building",
       external: true,
     },
     linkedin: {
       label: 'LinkedIn',
-      value: 'linkedin.com/in/tahmeed',
-      href: 'https://linkedin.com/in/tahmeed',
+      value: 'linkedin.com/in/tahmeedmahbub',
+      href: 'https://linkedin.com/in/tahmeedmahbub',
       desc: 'Professional background',
       external: true,
     },
